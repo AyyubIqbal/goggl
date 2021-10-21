@@ -1,10 +1,12 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { ResultContextProvider } from '../context/ResultContextProvider';
 import Results from './Results';
 
 const Routes = () => {
     return (
         <div className="p-4">
+            {/* <ResultContextProvider> */}
             <Switch>
                 <Route exact path="/">
                     <Redirect to="/search" />
@@ -13,6 +15,7 @@ const Routes = () => {
                     <Results />
                 </Route>
             </Switch>
+            {/* </ResultContextProvider> */}
         </div>
     );
 };

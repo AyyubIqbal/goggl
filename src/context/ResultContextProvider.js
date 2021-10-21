@@ -4,9 +4,9 @@ const ResultContext = createContext()
 const baseURL = 'https://google-search3.p.rapidapi.com/api/v1';
 
 export const ResultContextProvider = ({ children }) => {
-    const [results, setResults] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [searchTerm, setSearchTerm] = useState('')
+    const [results, setResults] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('elon mark');
 
     // /search, /videos, /images
     const getResult = async (type) => {
@@ -21,9 +21,12 @@ export const ResultContextProvider = ({ children }) => {
             }
         });
 
-        const data = await response.json()
+        const data = await response.json();
+
+        console.log(data);
 
         setResults(data)
+        setIsLoading(false)
     }
 
     return (
@@ -33,4 +36,4 @@ export const ResultContextProvider = ({ children }) => {
     )
 }
 
-export const useResultContext = () => useContext(ResultContext)
+export const useResultContext = () => useContext(ResultContext);
